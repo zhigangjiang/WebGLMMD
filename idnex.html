@@ -1,0 +1,527 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <title>NIUINI3D动漫展示-首页</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
+    <!-- Flat UI necessary-->
+    <link href="http://niuini.com/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://niuini.com/assets/css/flat-ui.min.css" rel="stylesheet">
+    <link href="http://niuini.com/assets/css/niuini.css" rel="stylesheet">
+    
+
+    <link href="http://niuini.com/ext/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+<script src="http://niuini.com/assets/js/jquery.min-1.13.js"></script>
+<div id="wrap">
+
+    <!-- navbar -->
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <!-- 头部 -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-3">
+                <span class="sr-only">切换导航</span>
+            </button>
+            <a class="navbar-brand" href="/">NIUINI</a>
+        </div>
+
+        <!-- 响应式内容 -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-3">
+
+            <!-- 固定部分 -->
+            <ul class="nav navbar-nav">
+                <li><a class="about" href=" http://niuini.com/list/project">在线播放</a></li>
+                <li><a class="about" href=" http://niuini.com/list/model">模型</a></li>
+                <li><a class="about" href=" http://niuini.com/list/motion">动作</a></li>
+                <li><a class="about" href=" http://niuini.com/list/camera">镜头</a></li>
+                <li><a class="about" href=" http://niuini.com/list/audio">音频</a></li>
+
+                <li  class="dropdown">
+                    <a  class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cloud-upload"></i> 上传<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://niuini.com/user/center/model/create">上传模型</a></li>
+                        <li><a href="http://niuini.com/user/center/motion/create">上传动作</a></li>
+                        <li><a href="http://niuini.com/user/center/camera/create">上传镜头</a></li>
+                        <li><a href="http://niuini.com/user/center/audio/create">上传背景音乐</a></li>
+                        <li class="divider"></li>
+                        <li><a href="http://niuini.com/user/center/project/create">创建播放项目</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- 搜索 -->
+            <form class="navbar-form navbar-left" action="#" role="search">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" id="navbarInput-01" type="search" placeholder="搜索">
+                        <span class="input-group-btn">
+                          <button type="submit" class="btn"><span class="fui-search"></span></button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+
+            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="http://niuini.com/user/login">登录</a></li>
+                <li><a href="http://niuini.com/user/register">注册</a></li>
+                            </ul>
+        </div>
+        <!-- /.响应式内容 -->
+
+    </div>
+</div>
+        
+        <div class="container">
+
+        <!-- 播放窗口 -->
+        <div class="jumbotron project_container" >
+            <!--fixed  Fps Tip-->
+            <div class="infoFps" >
+                <p id="otherinfo2" class="smallsize-font smallsize-font-chrome"></p>
+            </div>
+            <!--gui.dat控件-->
+            <div id="guiDat">
+            </div>
+
+            <!--fixed Row 警示框-->
+            <div class="row tipAlert"  style="display:none;">
+
+
+                <div id="myAlert" class="col-lg-offset-4 col-md-offset-4 col-md-offset-3 col-sm-offset-3 col-xs-offset-1 col-xs-10 col-sm-6 col-md-4 alert alert-warning alert-dismissable " data-dismiss="modal" aria-hidden="true">
+                    <button type="button" id ="closeAlertBtn" class="close">
+                        &times;
+                    </button>
+                    推荐使用WebKit、Gecko内核浏览器体验,例如Chrome、Firefox、360浏览器等。
+                    <p style="text-align: left;">
+                        pc端：按住鼠标左键，移动鼠标可移动视角；使用滚轮或按住中键，可缩放视图大小；按住右键，可平移视角位置；
+                    </p>
+                    <p style="text-align: left;">
+                        移动端：使用单指触摸移动视角；双指缩放视图大小；三指平移视角位置
+                    </p>
+
+
+                    <button   class="begainPlayBtn close btn btn-default  " style="position: relative; right: 46%;display: none;">
+                        <span id="begainPlayBtn" class="glyphicon glyphicon-play" >开始</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!--fixed Row 进度条-->
+            <div class="row foot">
+                <div id="progressModular" class="col-lg-offset-4 col-md-offset-4 col-md-offset-3 col-sm-offset-3 col-xs-offset-1 col-xs-10 col-sm-6 col-md-4 ">
+                    <p id="progressTitle"></p>
+                    <div id="progressBarF" class="progress progress-striped  active">
+                        <div id="progressBar" class="progress-bar progress-bar-info " style="width: 0%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--fixed 日志显示-->
+            <div class=" infoLog">
+                <p align="left" class=" text-primary smallsize-font smallsize-font-chrome" id="progressLog">
+                </p>
+            </div>
+
+
+            <div class="footControler">
+
+
+                <div class=" controlerPause " data-toggle="tooltip" title="播放">
+                    <i  id="controlerPause" class="fa fa-play" aria-hidden="true"></i>
+
+                </div>
+
+
+                <div class=" controlerFullscreen " data-toggle="tooltip" title="全屏"  >
+                    <i id="controlerFullscreen" class="fa fa-expand" aria-hidden="true"></i>
+                </div>
+
+                <div class=" controlerVolume " data-toggle="tooltip" title="音量100%">
+                    <i id="controlerVolume" class="fa fa-volume-up" aria-hidden="true"></i>
+
+                </div>
+
+                <div class=" controlerHeadphones " data-toggle="tooltip" title="3D音效"  >
+                    <i  id="controlerHeadphones" class="fa fa-headphones" aria-hidden="true"></i>
+                </div>
+
+                <div class=" controlerVideo " data-toggle="tooltip"  title="自动镜头" >
+                    <i id="controlerVideo" class="fa fa-video-camera" aria-hidden="true"></i>
+                </div>
+
+                <div class=" controlerInfo " data-toggle="tooltip" title="显示信息"  >
+                    <i id="controlerInfo" class="fa fa-info-circle" aria-hidden="true"></i>
+                </div>
+
+                <div class=" controlerCog " data-toggle="tooltip" data-placement="bottom" title="设置"  >
+                    <i  id="controlerCog" class="fa fa-cog" aria-hidden="true"></i>
+                </div>
+
+
+            </div>
+        </div>
+        <hr>
+        <!-- 资源介绍 -->
+        <div class="project_introduce" >
+
+            <!-- 项目介绍 -->
+            <div class="row project_introduce_line">
+                <div class="col-sm-9">
+                    <span class="project_info">
+                        <i class="fa fa-user"></i>创建者：
+                        <a href="http://niuini.com/user/25">
+                            onku
+                        </a>
+                    </span>
+                    <span class="project_info">
+                        <i class="fa fa-eye"></i>观看：744
+                    </span>
+                    <span class="project_info">
+                        <i class="fa fa-plus-square"></i>创建时间：2019-12-20 23:37:45
+                    </span>
+                </div>
+
+                <div class="col-sm-3 ">
+                    <a href="javascript:;" class="project_action"> <i class="fa fa-thumbs-up"></i> 赞</a>
+                    <a href="javascript:;" class="project_action"> <i class="fa fa-thumbs-down"></i> 踩</a>
+                    <a href="javascript:;" class="project_action"> <i class="fa fa-star"></i> 收藏</a>
+                    <a href="javascript:;" class="project_action" onclick="shareUrl()"> <i class="fa fa-send"></i> 分享</a>
+                </div>
+            </div>
+
+            <!-- 资源介绍 -->
+            <strong>资源列表：</strong>
+            <div class="row" style="overflow-x:auto;">
+                <div class="col-xs-12">
+                    <table class="table table-bordered project_introduce_file" >
+                        <tbody style="white-space:nowrap">
+                                                    <tr>
+                                <td width="80" align="center">
+                                                                            <i class="fa fa-file-archive-o"></i> 模型
+                                                                    </td>
+                                <td>
+                                    <a href="http://niuini.com/file/10" target="_blank"> 洛天依 日常服装 </a>
+                                </td>
+                                <td width="20">
+                                    <button class="btn btn-success btn-xs">
+                                        <i class="fa fa-file"></i> 大小:4.31MB
+                                    </button>
+                                </td>
+                                <td width="20">
+                                    <button  class="btn btn-success btn-xs">
+                                        <i class="fa fa-tag"></i> 积分:4.00
+                                    </button>
+                                </td>
+                                <td width="20">
+                                    
+                                        
+                                    
+                                    <a href="http://niuini.com/file/10" class="btn btn-info btn-xs" target="_blank">
+                                        <i class="fa fa-cloud-download"></i> 下载
+                                    </a>
+                                </td>
+                            </tr>
+                                                    <tr>
+                                <td width="80" align="center">
+                                                                            <i class="fa fa-file-o"></i> 动作
+                                                                    </td>
+                                <td>
+                                    <a href="http://niuini.com/file/11" target="_blank"> 红昭愿 motion by 呆喵挠琴 </a>
+                                </td>
+                                <td width="20">
+                                    <button class="btn btn-success btn-xs">
+                                        <i class="fa fa-file"></i> 大小:11.49MB
+                                    </button>
+                                </td>
+                                <td width="20">
+                                    <button  class="btn btn-success btn-xs">
+                                        <i class="fa fa-tag"></i> 积分:免费
+                                    </button>
+                                </td>
+                                <td width="20">
+                                    
+                                        
+                                    
+                                    <a href="http://niuini.com/file/11" class="btn btn-info btn-xs" target="_blank">
+                                        <i class="fa fa-cloud-download"></i> 下载
+                                    </a>
+                                </td>
+                            </tr>
+                                                    <tr>
+                                <td width="80" align="center">
+                                                                            <i class="fa fa-file-video-o"></i> 镜头
+                                                                    </td>
+                                <td>
+                                    <a href="http://niuini.com/file/12" target="_blank"> 红昭愿camera by GRE </a>
+                                </td>
+                                <td width="20">
+                                    <button class="btn btn-success btn-xs">
+                                        <i class="fa fa-file"></i> 大小:5.67KB
+                                    </button>
+                                </td>
+                                <td width="20">
+                                    <button  class="btn btn-success btn-xs">
+                                        <i class="fa fa-tag"></i> 积分:免费
+                                    </button>
+                                </td>
+                                <td width="20">
+                                    
+                                        
+                                    
+                                    <a href="http://niuini.com/file/12" class="btn btn-info btn-xs" target="_blank">
+                                        <i class="fa fa-cloud-download"></i> 下载
+                                    </a>
+                                </td>
+                            </tr>
+                                                    <tr>
+                                <td width="80" align="center">
+                                                                            <i class="fa fa-file-audio-o"></i>  音乐
+                                                                    </td>
+                                <td>
+                                    <a href="http://niuini.com/file/13" target="_blank"> 音阙诗听-红昭愿 </a>
+                                </td>
+                                <td width="20">
+                                    <button class="btn btn-success btn-xs">
+                                        <i class="fa fa-file"></i> 大小:6.61MB
+                                    </button>
+                                </td>
+                                <td width="20">
+                                    <button  class="btn btn-success btn-xs">
+                                        <i class="fa fa-tag"></i> 积分:免费
+                                    </button>
+                                </td>
+                                <td width="20">
+                                    
+                                        
+                                    
+                                    <a href="http://niuini.com/file/13" class="btn btn-info btn-xs" target="_blank">
+                                        <i class="fa fa-cloud-download"></i> 下载
+                                    </a>
+                                </td>
+                            </tr>
+                                                </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <strong>简介：</strong>
+            <!-- 项目介绍 -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                                                                                            数据来源
+<br>http://mmd.xiaolindraw.com/News/376.html
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+        <hr>
+
+        <h4><i class="fa fa-comments"></i> 评论</h4>
+
+        <div class="panel panel-default">
+
+            <div class="panel-heading">发表评论</div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <form>
+                            <div class="form-group">
+                                                                    <span style="padding-left:10px" style="width: 20px"> 请<a href="http://niuini.com/user/login" >登录</a>再发表评论</span>
+                                                            </div>
+                            <hr>
+
+                            <div class="form-group">
+                                <label>内容</label>
+                                <textarea id="comment_text" class="form-control" name="comment_text" rows="6" placeholder="请输入内容"></textarea>
+                                <span class="help-block pull-right">请文明发言，不要超过800个字，还可以输入<span id="comment_num">800</span>个字。</span>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="button" onclick="addComment()" class="btn btn-primary btn-lg btn-block"  value="发表评论">
+                            </div>
+                        </form>
+
+
+                    </div>
+                </div>
+            </div><!-- /.row -->
+        </div>
+
+        <div class="panel panel-default">
+
+            <div class="panel-heading">评论列表</div>
+            <div class="list-group" id="comment_list" style="min-height: 80px">
+                <img width="40px" height="40px" class="center-block" style="margin-top: 40px" src="http://niuini.com/images/loading.gif">
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+    <div id="push"></div>
+</div>
+    
+    <!-- footer -->
+<div class="footer ">
+    <div class="container">
+
+        <div class="row footer-body" >
+
+
+            <div class="footer-row">
+
+                <span class="footer_link" >&copy; 2019<a href="http://niuini.com"> NIUINI</a></span>
+
+
+            </div>
+
+            
+            <div class="footer-row">
+                <a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank">闽ICP备16035380号</a>
+                |
+                <script type="text/javascript" src="https://s19.cnzz.com/z_stat.php?id=1272882082&web_id=1272882082"></script>
+                |
+                <a class="footer_link" target="_blank" href="http://niuini.com/about">关于</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+    <script src="http://niuini.com/assets/js/flat-ui.min.js"></script>
+
+    <script src="http://niuini.com/ext/layer/layer.js"></script>
+
+
+    
+        
+    
+    
+    <script src="http://niuini.com/assets/js/carousel.js"></script>
+    <script src="http://niuini.com/ext/threejs/Three.js"></script>
+    <script src="http://niuini.com/ext/threejs/dat.gui_modify.js"></script>
+
+    <script src="http://niuini.com/ext/threejs/OrbitControls.js"></script>
+
+    <script src="http://niuini.com/ext/threejs/mmdPlay/libs/mmdparser.min.js"></script>
+    <script src="http://niuini.com/ext/threejs/mmdPlay/libs/ammo.js"></script>
+    <script src="http://niuini.com/ext/threejs/mmdPlay/libs/Detector.js"></script>
+
+    <script src="http://niuini.com/ext/threejs/mmdPlay/loaders/TGALoader.js"></script>
+    <script src="http://niuini.com/ext/threejs/mmdPlay/loaders/MMDLoader.js"></script>
+
+    <script src="http://niuini.com/ext/threejs/mmdPlay/effects/OutlineEffect.js"></script>
+
+    <script src="http://niuini.com/ext/threejs/mmdPlay/animation/CCDIKSolver.js"></script>
+    <script src="http://niuini.com/ext/threejs/mmdPlay/animation/MMDPhysics.js"></script>
+
+    <script src="http://niuini.com/ext/threejs/mmdPlay/Mirror/Mirror.js"></script>
+    <script src="http://niuini.com/ext/threejs/mmdPlay/SkyShader/SkyShader.js"></script>
+    <script src="http://niuini.com/ext/threejs/mmdPlay/jq/jquery.mousewheel.min.js"></script>
+
+    <script src="http://niuini.com/ext/threejs/project/control.js"></script>
+    <script>
+        var modelFile =    "http://file.niuini.com/model/10/Tda式 洛天依·三月雨常服.pmx";
+        var motionFiles = ["http://file.niuini.com/motion/201904202121169044.vmd"];
+        var cameraFiles = ["http://file.niuini.com/camera/201904202121539841.vmd"];
+        var audioFile =    "http://file.niuini.com/audio/201904202132351044.mp3";
+    </script>
+    <script src="http://niuini.com/ext/threejs/project/main.js"></script>
+    <script>
+        $('#comment_text').bind('input propertychange',function () {
+            $('#comment_num').html(800-$(this).val().length);
+        });
+        function addComment(){
+            if($('#comment_text').val().length>0) {
+                $.post('http://niuini.com/comment', {
+                    '_token': 'pab7QSiKqn1Z0vHurPHry1PilipJuFuAjlnzhDSK',
+                    'project_id': '5',
+                    'content': $('#comment_text').val()
+                }, function (data) {
+                    if (data.statue) {//发表成功
+                        layer.msg(data.msg, {icon: 6});
+                        $('#comment_text').val('');
+                        showComment();
+                    } else {
+                        layer.msg(data.msg, {icon: 5});
+                    }
+                });
+            }else{
+                layer.msg('请填写内容', {icon: 5});
+            }
+
+        }
+
+        function showComment() {
+            $.get('http://niuini.com/comment/5',{
+                '_token':'pab7QSiKqn1Z0vHurPHry1PilipJuFuAjlnzhDSK',
+                'type':'project',
+            },function (data) {
+                if(data){//发表成功
+                    $('#comment_list').html(data);
+                }else {
+                    layer.msg('获取评论列表错误', {icon: 5});
+                }
+            });
+        }
+
+        function deleteComment(comment_id){
+            $.post('http://niuini.com/comment/'+comment_id,{'_method':'delete','_token':'pab7QSiKqn1Z0vHurPHry1PilipJuFuAjlnzhDSK'},function (data) {
+                if(data.statue){//删除成功
+                    layer.msg(data.msg, {icon: 6});
+                    showComment();
+                }else {
+                    layer.msg(data.msg, {icon: 5});
+                }
+            });
+        }
+        showComment();
+
+    </script>
+
+    <script>
+        $(function () {
+            $('[data-toggle=tooltip]').tooltip();
+        });
+        function shareUrl(){
+            layer.alert('复制该链接 <input style="width:100%" value="http://niuini.com/project/5" />');
+        }
+    </script>
+
+
+
+
+
+</body>
+
+</html>
