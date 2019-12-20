@@ -14,7 +14,7 @@
 # 相关链接
 [https://github.com/takahirox/mmd-viewer-js]
 [https://threejs.org]
-[http://www.niuini.com
+[http://www.niuini.com]
 
 # 联系
 zigjiang@gmail.com
