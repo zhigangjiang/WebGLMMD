@@ -3,7 +3,7 @@
 事实上我的主要工作是组合几个库，像地面镜像[Mirror.js]、天空[SkyShader.js]到他的mmd项目，这部分代码在[main.js]中。
 并且修改了前端页面，使其看起来像一个播放器，在[control.js]中实现了对播放器的控制。
 这是我当时学习threejs，尝试做的demo，后来这个播放器应用在我的网站[niuini.com]上。
-当时没能力改进这个项目，其中的代码也许看起来很愚蠢。仅供参考。
+仅供参考。
 
 # 修改载入文件
 在index.html的454行~457行指定了载入文件的地址。
@@ -24,7 +24,7 @@ This project is based on the takahirox[https://github.com/takahirox]  mmd-viewer
 In fact, my main job is to combine several libraries, such as ground mirroring [Mirror.js] and sky [SkyShader.js] to his mmd project. 
 This part of the code is in [main.js]. 
 And modified the front page to make it look like a player, and implemented the control of the player in [control.js].
-This is a demo I tried to learn threejs at the time, and later this player was applied on my website [niuini.com]. I wasn't able to improve the project at the time, and the code in it might seem stupid.
+This is a demo I tried to learn threejs at the time, and later this player was applied on my website [niuini.com].
 for reference only.
 
 # Modify loaded files
