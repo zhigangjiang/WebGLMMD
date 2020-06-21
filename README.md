@@ -2,7 +2,7 @@
 本项目基于takahirox[https://github.com/takahirox] 的 mmd-viewer-js[https://github.com/takahirox/mmd-viewer-js]项目实现.
 事实上我的主要工作是组合几个库，像地面镜像[Mirror.js]、天空[SkyShader.js]到他的mmd项目，这部分代码在[main.js]中。
 并且修改了前端页面，使其看起来像一个播放器，在[control.js]中实现了对播放器的控制。
-这是我当时学习threejs，尝试做的demo，后来这个播放器应用在我的网站[niuini.com]上。
+这是我当时学习threejs，尝试做的demo，后来这个播放器应用在我的网站[niuini.com/106.14.2.199]上。
 仅供参考。
 
 # 修改载入文件
