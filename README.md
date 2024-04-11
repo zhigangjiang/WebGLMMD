@@ -1,4 +1,4 @@
-![](http://file.niuini.com/other/player.png)
+![](player.png)
 # 介绍
 本项目基于takahirox[https://github.com/takahirox] 的 mmd-viewer-js[https://github.com/takahirox/mmd-viewer-js]项目实现.
 事实上我的主要工作是组合几个库，像地面镜像[Mirror.js]、天空[SkyShader.js]到他的mmd项目，这部分代码在[main.js]中。
